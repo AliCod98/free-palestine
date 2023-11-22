@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FREE PALESTINE</title>
+    <link rel="icon" href="gaza.png" type="image/x-icon">
+    <!-- Optionally, you can also specify a favicon in different sizes for different devices -->
+    <link rel="apple-touch-icon" sizes="180x180" href="gaza.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Amatic+SC:700');
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: url(gaza1.jpg) no-repeat, #000;
+            background-size:cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: "Amatic SC";
+            overflow-x: hidden;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        div {
+            text-align: center;
+            font-size: 7.4rem;
+            color: #fee;
+            text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #ff4444, 0 0 0.5em #ff4444, 0 0 0.1em #ff4444, 0 10px 3px #000;
+        }
+
+        #message {
+            text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #13d30c, 0 0 0.5em #13d30c, 0 0 0.1em #13d30c, 0 10px 3px #000;
+        }
+
+        #tagline {
+            text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #6327ee, 0 0 0.5em #6327ee, 0 0 0.1em #6327ee, 0 10px 3px #000;
+        }
+
+        @media (max-width: 800px) {
+            div {
+                font-size: 10vw
+            }
+        }
+        audio {
+            display: none;
+        }
+        button {
+            background-color: #4CAF50; /* Green background color */
+            width: 200px;
+            height: 50px;
+            color: white; /* White text color */
+            padding: 10px 20px; /* Add some padding for better appearance */
+            font-size: 16px; /* Increase font size */
+            border: none; /* Remove border */
+            cursor: pointer; /* Add a pointer cursor on hover */
+            border-radius: 5px; /* Add rounded corners */
+        }
+        button:hover {
+            background-color: #a04545; /* Darker green color on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="myAudio" src="leva.mp3"></audio>
+    <button onclick="playAudio()">Play Me !</button>
+    <div id="main" title="Israel to hell"></div>
+    <div id="message" title="Israel to hell"></div>
+    <div id="tagline" ></div>
+    <script>
+        function playAudio() {
+          var video = document.getElementById("myAudio");
+          video.play();
+        }
+        const awesomeEffect = (dict) => {
+            let container = document.getElementById(dict.id);
+            let randomChars = '';
+            let text = dict.text;
+            let possible = dict.possible || 'ABCDEFASIRUWJFCKSJHYWRKJEsdfskdjfk-+*/|}{[]~\\":;?/.><=+-_)(*&^%$#@!)}';
+            let delay = dict.delay || 70;
+    
+            const generateRandomTitle = (i, randomChars) => {
+                container.innerText = randomChars;
+            }
+    
+            let i = 0;
+            const intervalId = setInterval(() => {
+                if (i <= text.length) {
+                    randomChars = text.substr(0, i);
+                    for (let j = i; j < text.length; j++) {
+                        randomChars += possible.charAt(
+                            Math.floor(Math.random() * possible.length)
+                        );
+                    }
+                    generateRandomTitle(i, randomChars);
+                    i++;
+                } else {
+                    clearInterval(intervalId);
+                }
+            }, delay);
+        };
+    
+        const addZoomEffect = (elementId) => {
+            const element = document.getElementById(elementId);
+            element.style.transition = 'transform 0.5s';
+            element.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                element.style.transform = 'scale(1)';
+            }, 500);
+        };
+    
+        // Initial effect
+        awesomeEffect({
+            id: 'main',
+            text: '#I STAND WITH PALESTINE',
+            possible: '$$$$$$'
+        });
+        awesomeEffect({
+            id: 'message',
+            text: 'FREE PALESTINE',
+            possible: '123456789',
+            delay: 200
+        });
+        awesomeEffect({
+            id: 'tagline',
+            text: 'PALESTINE'
+        });
+    
+        // Add zoom effect every 5 seconds
+        setInterval(() => {
+            addZoomEffect('main');
+            addZoomEffect('message');
+            addZoomEffect('tagline');
+        }, 1000); // Run the zoom effect every 5000 milliseconds (5 seconds)
+
+        // Function to change the background image every 2 seconds
+        function changeBackgroundImage() {
+            const body = document.body;
+            const imageArray = ["gaza1.jpg", "gaza2.jpg", "gaza3.jpg", "gaza4.jpg", "gaza5.jpg", "gaza6.jpeg", "gaza7.jpg"]; // Add more image URLs as needed
+            let currentIndex = 0;
+
+            setInterval(() => {
+                body.style.background = `url(${imageArray[currentIndex % imageArray.length]}) no-repeat, #000`;
+                body.style.backgroundSize = `cover`;
+                body.style.display = `flex`;
+                body.style.justifyContent = `center`;
+                body.style.alignItems = `center`;
+                body.style.height = `100vh`;
+                body.style.fontFamily = `"Amatic SC"`;
+                body.style.overflowX = `hidden`;
+                body.style.flexDirection = `column`;
+                body.style.lineHeight = `1.2`;
+                currentIndex++;
+            }, 3000);
+        }
+        // Call the function to initiate the background image change
+        changeBackgroundImage();
+    </script>
+    
+</body>
+
+</html>
